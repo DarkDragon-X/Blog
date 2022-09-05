@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <nav>
+        <div class="container">
+            <h1 class="nav-title"><a href="/">Title</a></h1>
+            <div class="nav-menu">
+                <a href="/" >HOME</a>
+                <a href="/photos">PHOTOS</a>
+                <a href="/posts">POSTS</a>
+                <a href="/aboutme" class="open-site">ABOUT ME</a>
+            </div>
+            <button class="open-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-nav">
+        <a href="/">HOME</a>
+        <a href="/photos">PHOTOS</a>
+        <a href="/posts">POSTS</a>
+        <a href="/aboutme">ABOUT ME</a>
+    </div>
+    <section class="hero-main">
+        <p class="hero-text">
+          About Me
+        </p>
+        <p class="hero-sub">
+            My name is Nipun Nagendra
+        </p>
+      </section>
+
+      <section class="about-me">
+        <img class="about-me-photo" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="My Photo">
+        <h2 class="center-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </h2>
+      </section>
+
+{% endblock content %}

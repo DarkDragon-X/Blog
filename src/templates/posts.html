@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+    <nav>
+        <div class="container">
+            <h1 class="nav-title"><a href="/">Title</a></h1>
+            <div class="nav-menu">
+                <a href="/" >HOME</a>
+                <a href="/photos" >PHOTOS</a>
+                <a href="/posts" class="open-site">POSTS</a>
+                <a href="/aboutme">ABOUT ME</a>
+            </div>
+            <button class="open-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-nav">
+        <a href="/index">HOME</a>
+        <a href="/photos">PHOTOS</a>
+        <a href="/posts">POSTS</a>
+        <a href="/aboutme">ABOUT ME</a>
+    </div>
+
+    <section class="hero-main">
+        <p class="hero-text">
+          Posts
+        </p>
+      </section>
+      {% for post in queryset %}
+      <section class="blog-post">
+        <div class="hover-post">
+            <h1>
+                <a href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+                </a>
+            </h1>
+            <h2>
+                <a href="{{ post.get_absolute_url }}">
+                {{ post.subtext }}
+                </a>
+            </h2>
+        </div>
+            <p class="date">
+                Posted {{ post.date|timesince }} ago
+            </p>
+      </section>
+        {% endfor %}
+<div class="center-text">
+  <div class="pagination">
+    {% if queryset.has_previous %}   
+    <a href="?{{ page_request_var }}={{ queryset.previous_page_number }}" class="pagination-item"><</a>
+    {% endif %}
+    <a href="#" class="pagination-item active">{{ queryset.number }}</a>
+    {% if queryset.has_next %}
+    <a href="?{{ page_request_var }}={{ queryset.next_page_number }}">></a>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+    <nav>
+        <div class="container">
+            <h1 class="nav-title"><a href="/">Title</a></h1>
+            <div class="nav-menu">
+                <a href="/" class="open-site">HOME</a>
+                <a href="/photos">PHOTOS</a>
+                <a href="/posts">POSTS</a>
+                <a href="/aboutme">ABOUT ME</a>
+            </div>
+            <button class="open-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-nav">
+        <a href="/">HOME</a>
+        <a href="/photos">PHOTOS</a>
+        <a href="/posts">POSTS</a>
+        <a href="/aboutme">ABOUT ME</a>
+    </div>
+    <section class="hero-main">
+        <p class="hero-text">
+          My Blog
+        </p>
+        <p class="hero-sub">
+            A blog about ...
+        </p>
+      </section>
+      {% for obj in latest_post %}
+      <section class="blog-post">
+        <div class="hover-post">
+            <h1>
+                <a href="{{ obj.get_absolute_url }}">
+                {{ obj.title }}
+                </a>
+            </h1>
+            <h2>
+                <a href="{{ obj.get_absolute_url }}">
+                {{ obj.subtext }}
+                </a>
+            </h2>
+        </div>
+            <p class="date">
+                Posted {{ obj.date|timesince }} ago
+            </p>
+            <hr>
+        <div class="blog-button-div">
+            <p class="front-posts-button">
+                <a href="/posts">ALL POSTS ⇒</a>
+            </p>
+        </div>
+      </section>
+        {% endfor %}
+      
+      
+      <section class="photo-text">
+        <h1 class="white-text">
+            A few of my photos
+        </h1>
+        <h2 class="white-text">
+            Stars, Nebulas, and Galaxies all captured right from the backyard
+        </h2>
+        <p class="photo-button">
+            <a href="/photos">SEE ALL ⇒</a>
+        </p>
+      </section>
+      
+        <section class="img-grid">
+        {% for obj in latest_photo %}
+        <div class="img"><img src="{{obj.image.url}}" alt="Astrophoto"></div>
+        {% endfor %}
+      </section>
+
+{% endblock content %}

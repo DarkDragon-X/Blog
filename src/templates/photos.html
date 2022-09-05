@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+    <nav>
+        <div class="container">
+            <h1 class="nav-title"><a href="/">Title</a></h1>
+            <div class="nav-menu">
+                <a href="/">HOME</a>
+                <a href="/photos" class="open-site">PHOTOS</a>
+                <a href="/posts">POSTS</a>
+                <a href="/aboutme">ABOUT ME</a>
+            </div>
+            <button class="open-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-nav">
+        <a href="/">HOME</a>
+        <a href="/photos">PHOTOS</a>
+        <a href="/posts">POSTS</a>
+        <a href="/aboutme">ABOUT ME</a>
+    </div>
+    <section class="hero-main">
+        <p class="hero-text">
+          Astrophotos
+        </p>
+      </section>
+
+      <section class="photo-gallery-text">
+        <h1 class="center-text">
+            Heading
+        </h1>
+        <h2 class="center-text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque voluptas repudiandae maxime culpa, minima aspernatur architecto delectus porro debitis, ea ratione adipisci, quibusdam officia itaque odit pariatur cupiditate. Fugiat, doloremque!
+        </h2>
+        <hr>
+      </section>
+<section class="all-photos">
+      <section class="img-grid">
+      {% for obj in queryset %}
+        <div class="img"><img src="{{obj.image.url}}" alt="Astrophoto"><h2 class="white-text center-text">{{obj.subtext}}</h2></div>
+        {% endfor %}
+    </section>
+</section>
+<div class="center-text">
+  <div class="pagination">
+    {% if queryset.has_previous %}   
+    <a href="?{{ page_request_var }}={{ queryset.previous_page_number }}" class="pagination-item"><</a>
+    {% endif %}
+    <a href="#" class="pagination-item active">{{ queryset.number }}</a>
+    {% if queryset.has_next %}
+    <a href="?{{ page_request_var }}={{ queryset.next_page_number }}">></a>
+    {% endif %}
+  </div>
+</div>
+{% endblock content%}

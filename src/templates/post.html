@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .post img {
+        width: 100%;
+    }
+
+</style>
+
+    <nav>
+        <div class="container">
+            <h1 class="nav-title"><a href="/">Title</a></h1>
+            <div class="nav-menu">
+                <a href="/" >HOME</a>
+                <a href="/photos">PHOTOS</a>
+                <a href="/posts">POSTS</a>
+                <a href="/aboutme">ABOUT ME</a>
+            </div>
+            <button class="open-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-nav">
+        <a href="/">HOME</a>
+        <a href="/photos">PHOTOS</a>
+        <a href="/posts">POSTS</a>
+        <a href="/aboutme">ABOUT ME</a>
+    </div>
+    <section class="hero-main" style="background-image: url( {{post.thumbnail.url}}  ); width:100%%; height:80vh;">
+        <p class="hero-text">
+            {{ post.title }}
+        </p>
+        <p class="hero-sub">
+            {{ post.subtext }}      
+        </p>
+        <p class="date white-text">
+            Posted {{ post.date|timesince }} ago
+        </p>
+      </section>
+
+      <section class="post">
+        <p>
+
+            {{ post.content | safe }}
+
+        </p>
+      </section>
+<br>
+{% endblock content%}
